@@ -1,0 +1,34 @@
+{
+  "compilerOptions":{
+    "target": "es5",
+    "module": "esnext",
+    "strict": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "src",
+    "sourceMap": true,
+    "outDir": "dist",
+    "jsx": "react",
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": false,
+    "strictNullChecks": true,
+    "removeComments": true,
+    "lib": ["es6", "dom"],
+    "rootDir": "src"
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "scripts",
+    "acceptance-tests",
+    "webpack",
+    "jest",
+    "src/setupTests.ts"
+  ],
+  "include": [
+    "./src/**/*.ts",
+    "./src/**/*.tsx",
+  ]
+}

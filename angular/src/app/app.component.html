@@ -1,0 +1,24 @@
+<div class="ng-contain">
+  <section class="header">
+    <img style="width: 38px;" src="https://angular.cn/assets/images/logos/angular/angular.svg" alt="">
+    <span>TODO LIST</span>
+  </section>
+  <section class="input-area_section">
+    <div class="input-area_input">
+      <input type="text" [formControl]="inputValue">
+    </div>
+    <div class="input-area-btn_div">
+      <button (click)="add()">添加</button>
+      <button>发送到 React</button>
+      <button>发送到 Vue</button>
+    </div>
+  </section>
+  <section class="todoList_section">
+    <div class="todoList-item_div" *ngFor="let item of todoList">
+      <div class="todoList-item-value_div">{{item.value}}</div>
+      <div class="todoList-item-rm_div">
+        <span (click)="rm(item.id)">移除</span>
+      </div>
+    </div>
+  </section>
+</div>
