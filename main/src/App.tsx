@@ -4,9 +4,17 @@
  * @description: 
  */
 import React from 'react';
+import './style.css'
 
 const App = () => (
-  <h1>Hello World!</h1>
+  <>
+    <h1></h1>
+    <section id="subApp">
+      <section id="reactApp"></section>
+      <section id="vueApp"></section>
+      <section id="ngApp"></section>
+    </section>
+  </>
 )
 
 export default App;

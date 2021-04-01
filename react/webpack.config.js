@@ -8,12 +8,17 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { name } = require('./package');
 
 module.exports = {
   entry: path.resolve(__dirname, './src/main.tsx'),
   output: {
     path: path.resolve(__dirname, './dist'),
     filename: '[name].[contenthash].js',
+    library: `${name}`,
+    libraryTarget: 'umd',
+    chunkLoadingGlobal: `webpackJsonp_${name}`,
+    globalObject: 'window',
   },
   resolve: {
     alias: {
@@ -49,6 +54,9 @@ module.exports = {
     compress: true,
     open: true,
     port: 8888,
-    publicPath: '/',
+    injectClient: false,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
   },
 };

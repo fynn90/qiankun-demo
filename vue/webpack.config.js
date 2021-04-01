@@ -7,11 +7,15 @@ const path = require('path');
 const { VueLoaderPlugin } = require('vue-loader');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
+const { name } = require('./package');
 module.exports = {
   entry: path.resolve(__dirname, './src/main.ts'),
   output: {
     path: path.resolve(__dirname, './dist'),
+    library: `${name}`,
+    libraryTarget: 'umd',
+    chunkLoadingGlobal: `webpackJsonp_${name}`,
+    globalObject: 'window',
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
@@ -65,14 +69,14 @@ module.exports = {
     }),
   ],
   devServer: {
-    inline: true,
     hot: true,
-    stats: 'minimal',
-    contentBase: __dirname,
-    overlay: true,
-    injectClient: false,
-    disableHostCheck: true,
-    port: 8081,
+    historyApiFallback: true,
+    compress: true,
     open: true,
+    port: 8080,
+    injectClient: false,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
   },
 };

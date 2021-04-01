@@ -28,7 +28,7 @@ export function Todo() {
   return (
     <section className="input-area_section">
       <div className="input-area_input">
-        <input type="text" value={inputValue} onChange={onChange}/>
+        <input type="text" placeholder="添加 TODO 项" value={inputValue} onChange={onChange}/>
       </div>
       <div className="input-area-btn_div">
         <button onClick={addItem}>添加</button>

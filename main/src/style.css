@@ -1,0 +1,7 @@
+#subApp {
+  display: flex;
+  width: 100%;
+}
+#subApp > section {
+  flex-grow: 1;
+}

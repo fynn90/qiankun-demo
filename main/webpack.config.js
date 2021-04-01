@@ -9,7 +9,10 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: path.resolve(__dirname, './src/main.tsx'),
+  entry:
+    process.env.MODE === 'multiple'
+      ? path.resolve(__dirname, './src/multiple.tsx')
+      : path.resolve(__dirname, './src/single.tsx'),
   output: {
     path: path.resolve(__dirname, './dist'),
     filename: '[name].[contenthash].js',

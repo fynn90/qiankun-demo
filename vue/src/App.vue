@@ -26,7 +26,7 @@
 </script>
 <style>
 .vue-section {
-  width: 50%;
-  margin: 20px auto;
+  width: 100%;
+  margin: 0 auto;
 }
 </style>
