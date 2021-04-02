@@ -13,7 +13,9 @@ function render(props: any) {
   const { container } = props;
   instance = createApp(App);
   instance.use(store);
-
+  instance.config.globalProperties.$onGlobalStateChange =
+    props.onGlobalStateChange;
+  instance.config.globalProperties.$setGlobalState = props.setGlobalState;
   instance.mount(container ? container.querySelector('#vueApp') : '#vueApp');
 }
 
@@ -28,9 +30,6 @@ export async function bootstrap() {
 
 export async function mount(props: any) {
   render(props);
-  // instance.config.globalProperties.$onGlobalStateChange =
-  //   props.onGlobalStateChange;
-  // instance.config.globalProperties.$setGlobalState = props.setGlobalState;
 }
 
 export async function unmount() {

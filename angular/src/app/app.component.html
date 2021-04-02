@@ -9,8 +9,8 @@
     </div>
     <div class="input-area-btn_div">
       <button (click)="add()">添加</button>
-      <button>发送到 React</button>
-      <button>发送到 Vue</button>
+      <button (click)="sendOtherService('react-app')">发送到 React</button>
+      <button (click)="sendOtherService('vue-app')">发送到 Vue</button>
     </div>
   </section>
   <section class="todoList_section">

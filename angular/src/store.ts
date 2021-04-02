@@ -1,15 +1,8 @@
-import { atom } from 'recoil';
-
-export const todoListState = atom<IToDoItem[]>({
-  key: 'todoListState',
-  default: [],
-});
-
 export class MicroAppStateActions {
   private static microAppInstance: MicroAppStateActions;
-  public onGlobalStateChange;
-  public setGlobalState;
-  public offGlobalStateChange;
+  public onGlobalStateChange: any;
+  public setGlobalState: any;
+  public offGlobalStateChange: any;
   private constructor() {}
 
   public static getInstance() {
@@ -19,9 +12,9 @@ export class MicroAppStateActions {
     return MicroAppStateActions.microAppInstance;
   }
   public setMicroAppStateActions(
-    onGlobalStateChange,
-    setGlobalState,
-    offGlobalStateChange
+    onGlobalStateChange: any,
+    setGlobalState: any,
+    offGlobalStateChange: any
   ) {
     MicroAppStateActions.microAppInstance.onGlobalStateChange = onGlobalStateChange;
     MicroAppStateActions.microAppInstance.setGlobalState = setGlobalState;

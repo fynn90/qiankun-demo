@@ -5,8 +5,8 @@
     </div>
     <div class="operateArea-buttons">
       <button @click="add">添加</button>
-      <button>发送到 React</button>
-      <button>发送到 Ng</button>
+      <button @click="sendOtherService('react-app')">发送到 React</button>
+      <button @click="sendOtherService('ng-app')">发送到 Ng</button>
     </div>
   </section>
 </template>
@@ -23,6 +23,41 @@
           value: this.inputValue,
           id: uuid(),
           from: "Vue",
+        });
+        this.inputValue = "";
+      }
+    }
+
+    mounted() {
+      let self = this;
+      this.$nextTick(function () {
+        if (self.$onGlobalStateChange) {
+          self.$onGlobalStateChange((state: any) => {
+            if (state["vue-app"].length) {
+              for (const item of state["vue-app"]) {
+                self.$store.commit("add", {
+                  ...item,
+                });
+              }
+              self.$setGlobalState({
+                "vue-app": [],
+              });
+            }
+          });
+        }
+      });
+    }
+
+    sendOtherService(serviceKey: string) {
+      if (this.$setGlobalState) {
+        this.$setGlobalState({
+          [serviceKey]: [
+            {
+              value: this.inputValue,
+              id: uuid(),
+              from: "Vue",
+            },
+          ],
         });
         this.inputValue = "";
       }

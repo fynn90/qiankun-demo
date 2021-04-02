@@ -4,6 +4,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
+import { MicroAppStateActions } from './store';
 
 if (environment.production) {
   enableProdMode();
@@ -23,7 +24,13 @@ export async function bootstrap(props: Object) {
   console.log(props);
 }
 
-export async function mount(props: Object) {
+export async function mount(props: any) {
+  const MicroAppStateInstance = MicroAppStateActions.getInstance();
+  MicroAppStateInstance.setMicroAppStateActions(
+    props.onGlobalStateChange,
+    props.setGlobalState,
+    props.offGlobalStateChange
+  );
   render();
 }
 

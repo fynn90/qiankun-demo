@@ -3,6 +3,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import {RecoilRoot} from 'recoil'
 import App from './App'
+import {MicroAppStateActions} from './store'
 
 
 function render(props) {
@@ -21,6 +22,8 @@ export async function bootstrap() {
 
 export async function mount(props) {
   console.log('[react16] props from main framework', props);
+  let MicroAppStateActionsInstance = MicroAppStateActions.getInstance()
+  MicroAppStateActionsInstance.setMicroAppStateActions(props.onGlobalStateChange,props.setGlobalState,props.offGlobalStateChange)
   render(props)
 }
 
