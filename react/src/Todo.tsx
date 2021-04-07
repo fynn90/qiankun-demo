@@ -11,7 +11,7 @@ export function Todo() {
   const onChange = ({ target: { value } }) => {
     setInputValue(value);
   }
-  if (MicroAppStateInstance) {
+  if (MicroAppStateInstance.onGlobalStateChange) {
     MicroAppStateInstance.onGlobalStateChange((newGlobalState) => {
       if (newGlobalState['react-app'].length) {
         for (const item of newGlobalState['react-app']) {
